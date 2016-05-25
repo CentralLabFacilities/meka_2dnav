@@ -14,6 +14,6 @@ catkin_package(
 	CATKIN_DEPENDS 
 )
 
-install(DIRECTORY launch
+install(DIRECTORY ./
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
