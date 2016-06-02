@@ -1,27 +1,9 @@
 <launch>
 
     <arg name="map" />
-
-
-    <!-- run shm_omnibase_controller to control the omnibase
-    <node pkg="shm_omnibase_controller" type="shm_omnibase_controller" name="shm_omnibase_controller" respawn="true">
-	<remap from="/omnibase_command" to="/cmd_vel"/>
-    <remap from="/omnibase_odom" to="/odom"/>
-    </node> -->
-
     <!-- static transform -->
     <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.306 0.0 0.4 0.0 0.0 0.0 base_link laser 100" />
     
-    <!-- static transform 
-    <node pkg="tf" type="static_transform_publisher" name="head_shell_to_kinect" args="0.10 0.0 0.06 0.0 0.0 0.0 shell camera_link 100" -->
-    
-    
-    <!-- <node pkg="tf" type="static_transform_publisher" name="dummy_3_to_zlift_link" args="0.43 0.0 0.75 0.0 0.0 0.0 dummy_3 zlift_link 100" />
-   -->
-    <!-- hokuyo laser -->
-    <node pkg="urg_node" respawn="true" type="urg_node" name="urg_node" output="screen" >
-    </node>
-
     <!-- Run the map server -->
     <node name="map_server" respawn="true" pkg="map_server" type="map_server" args="$(arg map).yaml"/>
 
@@ -35,6 +17,8 @@
 		<param name="navfn/allow_unknown" value="true"/>
 		<param name="clearing_rotation_allowed" value="false"/>
 		<param name="oscillation_timeout" value="30.0"/>
+		<remap to="/meka_roscontrol_base_controller/odom" from="/odom" />
+		<remap to="/meka_roscontrol_base_controller/cmd_vel" from="/cmd_vel" />
     <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find meka_2dnav)/config/local_costmap_params.yaml" command="load" />
