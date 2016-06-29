@@ -11,17 +11,17 @@
         <param name="initial_cov_xx" value="0.001"/>
         <param name="initial_cov_yy" value="0.001"/>
         <param name="initial_cov_aa" value="0.001"/>
-        <param name="odom_model_type" value="omni"/>
+        <param name="odom_model_type" value="diff"/>
         <param name="gui_publish_rate" value="10.0"/>
-        <param name="laser_max_beams" value="40"/>
-        <param name="min_particles" value="150"/>
-        <param name="max_particles" value="4000"/>
-        <param name="kld_err" value="0.01"/>
-        <param name="kld_z" value="0.99"/>
+        <param name="laser_max_beams" value="30"/>
+        <param name="min_particles" value="250"/>
+        <param name="max_particles" value="5000"/>
+        <param name="kld_err" value="0.005"/>
+        <param name="kld_z" value="0.995"/>
         <param name="odom_alpha1" value="0.2"/>
         <param name="odom_alpha2" value="0.2"/>
         <!-- translation std dev, m -->
-        <param name="odom_alpha3" value="0.2"/>
+        <param name="odom_alpha3" value="0.8"/>
         <param name="odom_alpha4" value="0.2"/>
         <param name="odom_alpha5" value="0.2"/>
         <param name="laser_z_hit" value="0.5"/>
@@ -39,9 +39,13 @@
         <param name="update_min_a" value="0.25"/>
         <param name="odom_frame_id" value="odom"/>
         <param name="resample_interval" value="1"/>
-        <param name="transform_tolerance" value="0.1"/>
+        <param name="transform_tolerance" value="0.25"/>
         <param name="recovery_alpha_slow" value="0.0"/>
         <param name="recovery_alpha_fast" value="0.0"/>
+
+	<!-- Test parameter -->
+	<param name="update_min_d" value="0.05"/>
+	<param name="update_min_a" value="0.25"/>
     </node>
 
 </launch>
