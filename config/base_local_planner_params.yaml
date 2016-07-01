@@ -1,7 +1,7 @@
 TrajectoryPlannerROS:
 
 # Set the acc.eleration limits of the robot - "most important thing"
-  acc_lim_x: 1.4                    # 2.5
+  acc_lim_x: 0.5                    # 2.5
   acc_lim_y: 0.6                    # 2.5
   acc_lim_theta: 1.4                # 3.2
 
