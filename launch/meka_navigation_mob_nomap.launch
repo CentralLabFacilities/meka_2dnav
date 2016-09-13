@@ -1,68 +1,59 @@
 <launch>
     <!-- run shm_omnibase_controller to control the omnibase
     <node pkg="shm_omnibase_controller" type="shm_omnibase_controller" name="shm_omnibase_controller" respawn="true">
-	<remap from="/omnibase_command" to="/cmd_vel"/>
-    <remap from="/omnibase_odom" to="/odom"/>
+	    <remap from="/omnibase_command" to="/cmd_vel"/>
+        <remap from="/omnibase_odom" to="/odom"/>
     </node> -->
 
-    <!-- static transform -->
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.306 0.0 0.4 0.0 0.0 0.0 base_link laser 100" />
-    
     <!-- static transform 
-    <node pkg="tf" type="static_transform_publisher" name="head_shell_to_kinect" args="0.10 0.0 0.06 0.0 0.0 0.0 shell camera_link 100" -->
-    
-    
-    <!-- <node pkg="tf" type="static_transform_publisher" name="dummy_3_to_zlift_link" args="0.43 0.0 0.75 0.0 0.0 0.0 dummy_3 zlift_link 100" />
-   -->
-    <!-- hokuyo laser -->
-    <node pkg="urg_node" respawn="true" type="urg_node" name="urg_node" output="screen" >
-    </node>
+    <node pkg="tf" type="static_transform_publisher" name="head_shell_to_kinect" args="0.10 0.0 0.06 0.0 0.0 0.0 shell camera_link 100" />
+    <node pkg="tf" type="static_transform_publisher" name="dummy_3_to_zlift_link" args="0.43 0.0 0.75 0.0 0.0 0.0 dummy_3 zlift_link 100" />
+    -->
 
     <!-- Run gmapping -->
 	<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
-			      <param name="maxUrange" value="25.0"/><!-- scans farther than this will be used for clearing but not for marking -->
-	      <param name="maxRange" value="29.0"/><!-- scans farther than this will be ignored completely -->
-	      <param name="sigma" value="0.05"/>
-	      <param name="kernelSize" value="1"/>
-	      <param name="lstep" value="0.05"/>
-	      <param name="astep" value="0.05"/>
-	      <param name="iterations" value="5"/>
-	      <param name="lsigma" value="0.075"/>
-	      <param name="ogain" value="3.0"/>
-	      <param name="lskip" value="0"/>
-	      <param name="srr" value="0.1"/>
-	      <param name="srt" value="0.2"/>
-	      <param name="str" value="0.1"/>
-	      <param name="stt" value="0.2"/>
-	      <param name="linearUpdate" value="1.0"/>
-	      <param name="angularUpdate" value="0.5"/>
-	      <param name="temporalUpdate" value="3.0"/>
-	      <param name="resampleThreshold" value="0.5"/>
-	      <param name="particles" value="30"/>
-	      <param name="xmin" value="-4.0"/>
-	      <param name="ymin" value="-4.0"/>
-	      <param name="xmax" value="4.0"/>
-	      <param name="ymax" value="4.0"/>
-	      <param name="delta" value="0.03"/>
-	      <param name="llsamplerange" value="0.01"/>
-	      <param name="llsamplestep" value="0.01"/>
-	      <param name="lasamplerange" value="0.005"/>
-	      <param name="lasamplestep" value="0.005"/>
-	      <param name="occ_thresh" value="0.6"/> <!-- for followme use 0.6 here !!!-->
-	      <param name="map_update_interval" value="1.0"/> 
-	      <param name="transform_publish_period" value="0.01"/> 
-
+        <param name="maxUrange" value="25.0"/><!-- scans farther than this will be used for clearing but not for marking -->
+        <param name="maxRange" value="29.0"/><!-- scans farther than this will be ignored completely -->
+        <param name="sigma" value="0.05"/>
+        <param name="kernelSize" value="1"/>
+        <param name="lstep" value="0.05"/>
+        <param name="astep" value="0.05"/>
+        <param name="iterations" value="5"/>
+        <param name="lsigma" value="0.075"/>
+        <param name="ogain" value="3.0"/>
+        <param name="lskip" value="0"/>
+        <param name="srr" value="0.1"/>
+        <param name="srt" value="0.2"/>
+        <param name="str" value="0.1"/>
+        <param name="stt" value="0.2"/>
+        <param name="linearUpdate" value="1.0"/>
+        <param name="angularUpdate" value="0.5"/>
+        <param name="temporalUpdate" value="3.0"/>
+        <param name="resampleThreshold" value="0.5"/>
+        <param name="particles" value="30"/>
+        <param name="xmin" value="-4.0"/>
+        <param name="ymin" value="-4.0"/>
+        <param name="xmax" value="4.0"/>
+        <param name="ymax" value="4.0"/>
+        <param name="delta" value="0.03"/>
+        <param name="llsamplerange" value="0.01"/>
+        <param name="llsamplestep" value="0.01"/>
+        <param name="lasamplerange" value="0.005"/>
+        <param name="lasamplestep" value="0.005"/>
+        <param name="occ_thresh" value="0.6"/> <!-- for followme use 0.6 here !!!-->
+        <param name="map_update_interval" value="1.0"/> 
+        <param name="transform_publish_period" value="0.01"/> 
 	</node>
+
 	<!-- Run move_base -->	
 	<node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
 		<param name="navfn/allow_unknown" value="true"/>
 		<param name="clearing_rotation_allowed" value="false"/>
-    <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find meka_2dnav)/config/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find meka_2dnav)/config/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find meka_2dnav)/config/base_local_planner_params.yaml" command="load" />
-
+        <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find meka_2dnav)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find meka_2dnav)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find meka_2dnav)/config/base_local_planner_params.yaml" command="load" />
 	</node>
 
   <!--node pkg="rviz" type="rviz" respawn="false" output="screen" name="rviz" 

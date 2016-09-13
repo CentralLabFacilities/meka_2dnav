@@ -1,8 +1,6 @@
 <launch>
 
     <arg name="map" />
-    <!-- static transform -->
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.306 0.0 0.4 0.0 0.0 0.0 base_link laser 100" />
     
     <!-- Run the map server -->
     <node name="map_server" respawn="true" pkg="map_server" type="map_server" args="$(arg map).yaml"/>
@@ -19,12 +17,11 @@
 		<param name="oscillation_timeout" value="30.0"/>
 		<remap to="/meka_roscontrol_base_controller/odom" from="/odom" />
 		<remap to="/meka_roscontrol_base_controller/cmd_vel" from="/cmd_vel" />
-    <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find meka_2dnav)/config/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find meka_2dnav)/config/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find meka_2dnav)/config/base_local_planner_params.yaml" command="load" />
-
+        <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find meka_2dnav)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find meka_2dnav)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find meka_2dnav)/config/base_local_planner_params.yaml" command="load" />
 	</node>
 
 </launch>

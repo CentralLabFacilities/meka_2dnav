@@ -1,5 +1,4 @@
 <launch>
-
     <arg name="topic_scan" />
 
     <node pkg="amcl"  type="amcl" name="amcl" respawn="true">
@@ -42,10 +41,9 @@
         <param name="transform_tolerance" value="0.25"/>
         <param name="recovery_alpha_slow" value="0.0"/>
         <param name="recovery_alpha_fast" value="0.0"/>
-
-	<!-- Test parameter -->
-	<param name="update_min_d" value="0.05"/>
-	<param name="update_min_a" value="0.25"/>
+	    <!-- Test parameter -->
+	    <param name="update_min_d" value="0.05"/>
+	    <param name="update_min_a" value="0.25"/>
     </node>
 
 </launch>

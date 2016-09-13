@@ -1,4 +1,6 @@
 <launch>
+    <!-- Run basic config -->
+    <include file="$(find meka_2dnav)/launch/meka_config.launch" />
 
     <arg     if="$(env NAVIGATION_USE_MAP)" name="part_map" value="map" />
     <arg unless="$(env NAVIGATION_USE_MAP)" name="part_map" value="nomap" />
