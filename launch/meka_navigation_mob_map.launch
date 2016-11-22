@@ -7,7 +7,7 @@
 
     <!--- Run AMCL -->
     <include file="$(find meka_2dnav)/launch/amcl.launch">
-        <arg name="topic_scan" value="scan_front"/>
+        <arg name="topic_scan" value="scan_merged"/>
     </include>
 
 	<!-- Run move_base -->	
@@ -15,8 +15,8 @@
 		<param name="navfn/allow_unknown" value="true"/>
 		<param name="clearing_rotation_allowed" value="false"/>
 		<param name="oscillation_timeout" value="30.0"/>
-		<remap to="/meka_roscontrol_base_controller/odom" from="/odom" />
-		<remap to="/meka_roscontrol_base_controller/cmd_vel" from="/cmd_vel" />
+		<!--remap to="/meka_roscontrol_base_controller/odom" from="/odom" /-->
+		<!--remap to="/meka_roscontrol_base_controller/cmd_vel" from="/cmd_vel" /-->
         <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find meka_2dnav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
         <rosparam file="$(find meka_2dnav)/config/local_costmap_params.yaml" command="load" />
