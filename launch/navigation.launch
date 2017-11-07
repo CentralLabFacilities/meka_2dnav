@@ -5,12 +5,8 @@
     <arg     if="$(env NAVIGATION_USE_MAP)" name="part_map" value="map" />
     <arg unless="$(env NAVIGATION_USE_MAP)" name="part_map" value="nomap" />
 
-    <arg     if="$(env NAVIGATION_USE_SIM)" name="part_sim" value="sim" />
-    <arg unless="$(env NAVIGATION_USE_SIM)" name="part_sim" value="mob" />
-
-    <include file="$(find meka_2dnav)/launch/meka_navigation_$(arg part_sim)_$(arg part_map).launch">
+    <include file="$(find meka_2dnav)/launch/meka_navigation_mob_$(arg part_map).launch">
         <arg if="$(env NAVIGATION_USE_MAP)" name="map"   value="$(env NAVIGATION_MAP)" />
-        <arg if="$(env NAVIGATION_USE_SIM)" name="world" value="$(env NAVIGATION_WORLD)" />
     </include>
 
 </launch>
