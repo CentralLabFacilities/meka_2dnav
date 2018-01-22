@@ -13,8 +13,8 @@
     <!-- Run gmapping -->
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
     <remap from="/scan" to="/scan_merged"/>	    
-    <param name="maxUrange" value="25.0"/><!-- scans farther than this will be used for clearing but not for marking -->
-    <param name="maxRange" value="29.0"/><!-- scans farther than this will be ignored completely -->
+    <param name="maxUrange" value="24.0"/><!-- scans farther than this will be used for clearing but not for marking -->
+    <param name="maxRange" value="25.0"/><!-- scans farther than this will be ignored completely -->
     <param name="sigma" value="0.05"/>
     <param name="kernelSize" value="1"/>
     <param name="lstep" value="0.05"/>

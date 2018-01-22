@@ -12,6 +12,10 @@
         <param name="publish_intensity" type="bool" value="true"/>
         <!--param name="angle_min" type="double" value="-3.141"/--><!-- -pi/2 = -1.5708-->
         <!--param name="angle_max" type="double" value="3.141"/--><!-- pi/2 = 1.5708-->
+
+        <param name="range_max" type="double" value="30.0" />
+
+
     </node>
 
     <!-- sick laser (back) -->
@@ -59,8 +63,8 @@
         <param name="angle_increment" type="double" value="0.00873" /> <!-- angle in rad. 0.00873rad=0.5degree -->
         <param name="time_increment" type="double" value="0.0" /> <!-- Time increment of the output scan -->
         <param name="scan_time" type="double" value="0.033333333" /> <!-- Scan time of the output scan -->
-        <param name="range_min" type="double" value="0.1" /> <!-- Range min of the output scan -->
-        <param name="range_max" type="double" value="10.0" /> <!-- Range max of the output scan. This must be greater than gmapping.maxRange! Because this value will be set for invalid readings.  -->
+        <param name="range_min" type="double" value="0.3" /> <!-- Range min of the output scan -->
+        <param name="range_max" type="double" value="25.0" /> <!-- Range max of the output scan. This must be greater than gmapping.maxRange! Because this value will be set for invalid readings.  -->
     </node>
 
 </launch>
