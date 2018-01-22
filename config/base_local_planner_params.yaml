@@ -2,17 +2,17 @@ TrajectoryPlannerROS:
 
 # Set the acc.eleration limits of the robot - "most important thing"
   acc_lim_x: 0.2                    # 2.5
-  acc_lim_y: 0.2                    # 2.5
-  acc_lim_theta: 0.2                # 3.2
+  acc_lim_y: 0.1                    # 2.5
+  acc_lim_theta: 0.15                # 3.2
 
 # Set the velocity limits of the robot
   max_vel_x: 0.6                    # 0.5
   min_vel_x: -0.1                    # 0.1
-  max_vel_y: 0.2                    # ??
-  min_vel_y: -0.2                    # ??
-  max_vel_theta: 0.8               # 1.0
-  min_vel_theta: -0.8               #-1.0
-  min_in_place_vel_theta: 0.8       # 0.4
+  max_vel_y: 0.1                    # ??
+  min_vel_y: -0.1                    # ??
+  max_vel_theta: 0.6               # 1.0
+  min_vel_theta: -0.6               #-1.0
+  min_in_place_vel_theta: 0.6       # 0.4
 
 # Notice that this velocity is set to be negative. A bit confusing admittedly.
   escape_vel: -0.1                  # -0.1
@@ -31,8 +31,8 @@ TrajectoryPlannerROS:
   sim_granularity: 0.15             # 0.025 -- The step size, in meters, to take between points on a given trajectory 
   angular_sim_granularity: 0.1     # 0.025 -- The step size, in radians, to take between angular samples on a given trajectory
   vx_samples: 10                    # 3 -- The number of samples to use when exploring the x velocity space 
-  vy_samples: 10                    # 3 -- The number of samples to use when exploring the y velocity sp$
-  vtheta_samples: 10                # 20 -- The number of samples to use when exploring the theta velocity space 
+  vy_samples: 5                    # 3 -- The number of samples to use when exploring the y velocity sp$
+  vtheta_samples: 16                # 20 -- The number of samples to use when exploring the theta velocity space 
   controller_frequency: 20          # 20 -- The frequency at which this controller will be called in Hz. SEE DOCUMENTATION
 
 # ---- Parameters for scoring trajectories
