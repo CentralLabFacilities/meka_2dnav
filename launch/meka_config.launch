@@ -1,7 +1,7 @@
 <launch>
     <!-- static transform -->
     <arg name="pi" value="3.14159265"/>
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser_virtual" args="0.0 0.0 0.4 0.0 0.0 0.0 base_link laser_virtual 100" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_laser_virtual" args="0.0 0.0 0.4 0.0 0.0 0.0 base_link laser_virtual" />
     
     <!-- hokuyo laser (front) -->
     <node name="urg_node" pkg="urg_node" type="urg_node" respawn="true" output="screen">
